@@ -21,9 +21,9 @@ export default class PipelineConstruct extends Construct {
       .owner("sykang808")
       .repository({
         repoUrl: 'my-eks-blueprints',
-        credentialsSecretName: 'github-token',
+        credentialsSecretName: 'github-token2',
         targetRevision: 'main'
       })
-      .build(scope, id + '-stack');
+      .build(scope, id + '-stack', { env: { account: props?.env?.account, region: props?.env?.region } });
   }
 }

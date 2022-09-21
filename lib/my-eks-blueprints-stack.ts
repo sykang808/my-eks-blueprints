@@ -11,10 +11,11 @@ export default class ClusterConstruct extends Construct {
     const region = props?.env?.region!;
 
     const blueprint = blueprints.EksBlueprint.builder()
-    .account(account)
-    .region(region)
-    .addOns()
-    .teams()
-    .build(scope, id+"-stack");
+      .account(account)
+      .region(region)
+      .addOns()
+      .teams()
+      .build(scope, id + "-stack");
   }
 }
+
