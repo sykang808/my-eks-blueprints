@@ -23,6 +23,12 @@ export default class PipelineConstruct extends Construct {
         repoUrl: 'my-eks-blueprints',
         credentialsSecretName: 'github-token2',
         targetRevision: 'main'
+      }).wave({
+        id: "envs",
+        stages: [
+          { id: "dev", stackBuilder: blueprint.clone('us-east-1') },
+          { id: "prod", stackBuilder: blueprint.clone('ap-northeast-2') }
+        ]
       })
       .build(scope, id + '-stack', { env: { account: props?.env?.account, region: props?.env?.region } });
   }
