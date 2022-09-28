@@ -19,6 +19,7 @@ export default class ClusterConstruct extends Construct {
         new blueprints.KubeProxyAddOn(),
 
         // Self-managed Add-ons
+        new blueprints.addons.ArgoCDAddOn(),
         new blueprints.addons.AwsForFluentBitAddOn(),
         new blueprints.addons.AwsLoadBalancerControllerAddOn(),
         new blueprints.addons.ClusterAutoScalerAddOn(),
