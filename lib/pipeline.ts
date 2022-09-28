@@ -13,7 +13,7 @@ export default class PipelineConstruct extends Construct {
     const blueprint = blueprints.EksBlueprint.builder()
       .account(account)
       .region(region)
-      .addOns()
+      .addOns(new blueprints.addons.ArgoCDAddOn())
       .teams();
 
     blueprints.CodePipelineStack.builder()
@@ -21,13 +21,12 @@ export default class PipelineConstruct extends Construct {
       .owner("sykang808")
       .repository({
         repoUrl: 'my-eks-blueprints',
-        credentialsSecretName: 'github-token2',
+        credentialsSecretName: 'github-token',
         targetRevision: 'main'
       }).wave({
         id: "envs",
         stages: [
           { id: "dev", stackBuilder: blueprint.clone('us-west-2') },
-          { id: "prod", stackBuilder: blueprint.clone('ap-northeast-2') }
         ]
       })
       .build(scope, id + '-stack', { env: { account: props?.env?.account, region: props?.env?.region } });

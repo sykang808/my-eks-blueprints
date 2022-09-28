@@ -13,7 +13,18 @@ export default class ClusterConstruct extends Construct {
     const blueprint = blueprints.EksBlueprint.builder()
       .account(account)
       .region(region)
-      .addOns()
+      .addOns(
+        new blueprints.VpcCniAddOn(),
+        new blueprints.CoreDnsAddOn(),
+        new blueprints.KubeProxyAddOn(),
+
+        // Self-managed Add-ons
+        new blueprints.addons.AwsForFluentBitAddOn(),
+        new blueprints.addons.AwsLoadBalancerControllerAddOn(),
+        new blueprints.addons.ClusterAutoScalerAddOn(),
+        new blueprints.addons.EfsCsiDriverAddOn(),
+        new blueprints.addons.MetricsServerAddOn()
+      )
       .teams()
       .build(scope, id + "-stack");
   }
