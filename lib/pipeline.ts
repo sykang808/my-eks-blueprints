@@ -25,7 +25,8 @@ export default class PipelineConstruct extends Construct {
         new blueprints.addons.AwsLoadBalancerControllerAddOn(),
         new blueprints.addons.ClusterAutoScalerAddOn(),
         new blueprints.addons.EfsCsiDriverAddOn(),
-        new blueprints.addons.MetricsServerAddOn()
+        new blueprints.addons.MetricsServerAddOn(),
+        new blueprints.addons.ArgoCDAddOn()
     )
     .teams();
 
