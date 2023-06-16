@@ -19,14 +19,14 @@ export default class PipelineConstruct extends Construct {
        new blueprints.VpcCniAddOn(),
         new blueprints.CoreDnsAddOn(),
         new blueprints.KubeProxyAddOn(),
+        new blueprints.ArgoCDAddOn(),
         
         // Self-managed Add-ons
         new blueprints.addons.AwsForFluentBitAddOn(),
         new blueprints.addons.AwsLoadBalancerControllerAddOn(),
         new blueprints.addons.ClusterAutoScalerAddOn(),
         new blueprints.addons.EfsCsiDriverAddOn(),
-        new blueprints.addons.MetricsServerAddOn(),
-        new blueprints.addons.ArgoCDAddOn()
+        new blueprints.addons.MetricsServerAddOn()
     )
     .teams();
 
